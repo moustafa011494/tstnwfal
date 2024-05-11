@@ -351,11 +351,11 @@ ${global.namebot}
                 else
                     m.exp += xp
                 if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 7) {
-                    this.reply(m.chat, `The limit has reached the maximum limit.\nSubscribe immediately to get unlimited limits⚡*`, m)
+                    this.reply(m.chat, `لقد وصل الحد إلى الحد الأقصى.\nاشترك فورا للحصول على حدود غير محدودة⚡*`, m)
                     continue // Limit habis
                 }
                 if (plugin.level > _user.level) {
-                    this.reply(m.chat, `Diperlukan Level ${plugin.level} Untuk Menggunakan Perintah Ini\n*Level Kamu:* ${_user.level}`, m)
+                    this.reply(m.chat, `المستوى المطلوب ${plugin.level} لاستخدام هذا الأمر\n*مستواك:* ${_user.level}`, m)
                     continue // If the level has not been reached
                 }
                 let extra = {
@@ -601,10 +601,10 @@ if (_wel.gcImg) {
             }
             break
         case 'promote':
-            text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
+            text = (chat.sPromote || this.spromote || conn.spromote || '@user ```هو الآن المشرف```')
         case 'demote':
             if (!text)
-                text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
+                text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```لم يعد المشرف```')
             text = text.replace('@user', '@' + participants[0].split('@')[0])
             if (chat.detect)
                 this.sendMessage(id, { text, mentions: this.parseMention(text) })
@@ -645,10 +645,10 @@ export async function groupsUpdate(groupsUpdate) {
         if (!id) continue
         let chats = global.db.data.chats[id], text = ''
         if (!chats?.detect) continue
-        if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || '```Description has been changed to```\n@desc').replace('@desc', groupUpdate.desc)
-        if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || '```Subject has been changed to```\n@subject').replace('@subject', groupUpdate.subject)
-        if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '```Icon has been changed to```').replace('@icon', groupUpdate.icon)
-        if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```Group link has been changed to```\n@revoke').replace('@revoke', groupUpdate.revoke)
+        if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || '```تم تغيير الوصف إلى```\n@desc').replace('@desc', groupUpdate.desc)
+        if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || '```تم تغيير الموضوع إلى```\n@subject').replace('@subject', groupUpdate.subject)
+        if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '```تم تغيير الأيقونة إلى```').replace('@icon', groupUpdate.icon)
+        if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```تم تغيير رابط المجموعة إلى```\n@revoke').replace('@revoke', groupUpdate.revoke)
         if (!text) continue
         await conn.sendMessage(id, { text: text })
     }
@@ -667,8 +667,8 @@ export async function deleteUpdate(message) {
         if (chat.delete) return
         
         await conn.reply(msg.chat, `
-Terdeteksi @${participant.split`@`[0]} telah menghapus pesan barusan
-Untuk mematikan fitur ini, ketik
+مُكتَشَف @${participant.split`@`[0]} لقد حذف الرسالة الآن
+لإيقاف هذه الميزة، اكتب
 *.disable antidelete*
 `.trim(), msg, {
             mentions: [participant]
@@ -685,17 +685,18 @@ let mentionedJid = [m.sender]
 let name = conn.getName(m.sender)
 
 let msg = {
-    premium: 'Sorry, this feature can only be used by *Premium* users',
-    group: 'This feature can only be used within groups',       
-    private: 'This feature can only be used within private',       
-    botAdmin: 'Make the bot an admin, to be able to access the group',
-    admin: 'Make the admin, to be able to access the group',
-    restrict: 'Restrict Not Turned On For This Chat',
-    game: 'Feature *Game* Not Turned On For This Chat',
-    rpg: 'Feature *Rpg* Not Turned On For This Chat',
-    rowner: 'Fitur khusus Real Owner, *User* tidak dapat mengakses nya :!',
-    owner: 'Fitur khusus owner, *User* tidak dapat mengakses nya :!',
-    unreg: `*Untuk dapat mengakses seluruh fitur Bot,*\n*Anda harus melakukan \`\`\`DAFTAR\`\`\` terlebih dahulu.*\*Untuk melakukan _daftar_ caranya cukup mudah*\n*ketik: /daftar nama.umur*\ncara lainnya:\n*ketik: @verify*`
+    premium: '> *هذا الأمر خاص بصاحب البوت فقط و لن يشتغل معك هذا الأمر لا تحاول معه 😆 هذا حساب صاحب البوت* 
+ instagram.com/nawfal_the_ghost',
+    group: 'لا يمكن استخدام هذه الميزة إلا ضمن المجموعات',       
+    private: 'لا يمكن استخدام هذه الميزة إلا في القطاع الخاص',       
+    botAdmin: 'اجعل الروبوت مسؤولاً، ليتمكن من الوصول إلى المجموعة',
+    admin: 'جعل المشرف، لتكون قادرة على الوصول إلى المجموعة',
+    restrict: 'لم يتم تشغيل التقييد لهذه الدردشة',
+    game: 'الميزة *اللعبة* لم يتم تشغيلها لهذه الدردشة',
+    rpg: 'الميزة *Rpg* لم يتم تشغيلها لهذه الدردشة',
+    rowner: 'ميزة خاصة للمالك الحقيقي، *المستخدمون* لا يمكنهم الوصول إليها :!',
+    owner: 'الميزات الخاصة بالمالك فقط، ولا يمكن *للمستخدمين* الوصول إليها :!',
+    unreg: `*لتتمكن من الوصول إلى جميع ميزات Bot,*\n*عليك أن تفعل \`\`\`قائمة\`\`\` أولاً.*\*_للتسجيل_ الطريقة سهلة للغاية*\n*يكتب: /daftar name.age*\طريق اخر:\n*يكتب: @verify*`
         }[type]
         
   if (msg) return conn.sendMessage(m.chat, {
@@ -714,18 +715,18 @@ let msg = {
 
 function ucapan() {
   const time = moment.tz('Asia/Jakarta').format('HH')
-  let res = "Udah pagi ni kak masih belum tidur?"
+  let res = "هل ما زلت لم تنام هذا الصباح؟"
   if (time >= 4) {
-    res = "Pagi Kak 🌄"
+    res = "أختي الصباح 🌄"
   }
   if (time >= 10) {
-    res = "Selamat Siang Kak ☀️"
+    res = "مساء الخير أختي☀️"
   }
   if (time >= 15) {
-    res = "Selamat Sore Kak 🌇"
+    res = "مساء الخير أختي 🌇"
   }
   if (time >= 18) {
-    res = "Malam Kak 🌙"
+    res = "ليلة الأخت 🌙"
   }
   return res
 }
