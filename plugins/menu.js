@@ -179,7 +179,7 @@ const handler = async (m, { conn, usedPrefix: _P, isOwner, isPremium }) => {
 						mediaType: 1,
 						thumbnailUrl: `https://telegra.ph/file/12ab80b6775fa7311f098.jpg`,
 						mediaUrl: ``,
-						sourceUrl: "https://instagram.com/noureddine_ouafy",
+						sourceUrl: "https://instagram.com/nawfal_the_ghost",
 					},
 				},
 			},
