@@ -6,7 +6,7 @@ import { format } from 'util';
 const MAX_CONTENT_SIZE = 100 * 1024 * 1024 * 1024; // 100GB
 
 let handler = async (m, { text }) => {
-  if (!text) throw '*Masukkan Link*\n*Ex:* s.id';
+  if (!text) throw '*أدخل الرابط*\n*Ex:* s.id';
 
   text = addHttpsIfNeeded(text);
   let { href: url, origin } = new URL(text);
@@ -24,18 +24,18 @@ let handler = async (m, { text }) => {
         response = await axios.get(url, { headers: { 'referer': origin } });
         txt = response.data;
       } catch {
-        throw "Gagal mengambil data dari semua sumber";
+        throw "فشل في استرداد البيانات من جميع المصادر";
       }
     }
   }
 
   const contentLength = response.headers['content-length'];
   if (contentLength > MAX_CONTENT_SIZE) {
-    return m.reply(`File terlalu besar. Ukuran maksimum adalah ${formatSize(MAX_CONTENT_SIZE)}`);
+    return m.reply(`الملف كبير جدا.  الحد الأقصى للحجم هو ${formatSize(MAX_CONTENT_SIZE)}`);
   }
 
   if (!/text|json/.test(response.headers['content-type'])) {
-    return conn.sendFile(m.chat, url,  'instagram.com/noureddine_ouafy', m);
+    return conn.sendFile(m.chat, url,  'instagram.com/nawfal_the_ghost', m);
   }
 
   try {
