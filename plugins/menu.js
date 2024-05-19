@@ -5,8 +5,8 @@ import { xpRange } from "../lib/levelling.js";
 import moment from "moment-timezone";
 const defaultMenu = {
 	before: `
- *Salam* : %name
- *uptime* : %uptime
+ *🌸Hello🌸* : %name
+ *uptime✅* : %uptime
 %readMore`,
 	header: `┏━━⬣ ≼ %category `,
 	body: "┃ ⎔ %cmd ",
